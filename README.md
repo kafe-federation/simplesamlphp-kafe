@@ -9,3 +9,11 @@ This is the official repository of the SimpleSAMLphp software.
 * [SimpleSAMLphp Downloads](https://simplesamlphp.org/download)
 
 Please, [contribute](CONTRIBUTING.md)!
+
+Addon for KAFE
+==============
+This is fixed or added-on for Korean Access Federation
+
+* bug-fix for single logout
+* read registration authority
+* GUI for KAFE members
