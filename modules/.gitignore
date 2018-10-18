@@ -3,6 +3,22 @@
 !/.gitignore
 
 # Explicitly include modules that ship with simplesamlphp
+!/InfoCard
+!/aggregator
+!/aggregator2
+!/aselect
+!/autotest
+!/consentSimpleAdmin
+!/kafe
+!/logpeek
+!/metaedit
+!/modinfo
+!/openid
+!/openidProvider
+!/papi
+!/saml2debug
+!/themefeidernd
+
 !/adfs/
 !/authcrypt/
 !/authfacebook/

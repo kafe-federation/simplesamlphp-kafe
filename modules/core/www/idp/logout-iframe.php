@@ -1,4 +1,5 @@
 <?php
+// Apply KAFE Edition
 
 if (!isset($_REQUEST['id'])) {
     throw new SimpleSAML_Error_BadRequest('Missing required parameter: id');
@@ -135,6 +136,8 @@ $t->data['from'] = $state['core:Logout-IFrame:From'];
 
 /** @deprecated The "SPs" array will be removed, use the "remaining_services" array instead */
 $t->data['SPs'] = $state['core:Logout-IFrame:Associations'];
+
+$t->data['jquery'] = array('core' => true, 'ui' => false, 'css' => false);
 
 if ($type !== 'nojs') {
     /** @deprecated The "jquery" array will be removed in 2.0 */

@@ -1,4 +1,5 @@
 <?php
+// Apply KAFE Edition
 
 /**
  * Helper class for username/password authentication.
@@ -265,7 +266,7 @@ abstract class sspmod_core_Auth_UserPassBase extends SimpleSAML_Auth_Source {
 		 * was called. We should call login() on the same authentication source.
 		 */
 
-		/* Attempt to log in. */
+		/* Attempt to log in. 
 		try {
 			$attributes = $source->login($username, $password);
 		} catch (Exception $e) {
@@ -275,8 +276,21 @@ abstract class sspmod_core_Auth_UserPassBase extends SimpleSAML_Auth_Source {
 
 		SimpleSAML\Logger::stats('User \''.$username.'\' successfully authenticated from '.$_SERVER['REMOTE_ADDR']);
 
-		/* Save the attributes we received from the login-function in the $state-array. */
-		assert(is_array($attributes));
+        SimpleSAML_Logger::stats('User \''.$username.'\' has been successfully authenticated.');*/
+
+        $encAddr = base64_encode(SimpleSAML\Utils\Crypto::aesEncrypt($_SERVER['REMOTE_ADDR']));
+        $encUser = base64_encode(SimpleSAML\Utils\Crypto::aesEncrypt($username));
+        try {
+            $attributes = $source->login($username, $password);
+        } catch (Exception $e) {
+            SimpleSAML_Logger::stats('Unsuccessful login attempt from \''.$encAddr.'\'.');
+            throw $e;
+        }
+
+        SimpleSAML_Logger::stats('User \''.$encUser.'\' has been successfully authenticated from \''.$encAddr.'\'.');
+
+        /* Save the attributes we received from the login-function in the $state-array. */
+        assert(is_array($attributes));
 		$state['Attributes'] = $attributes;
 
 		/* Return control to SimpleSAMLphp after successful authentication. */

@@ -1,5 +1,5 @@
 <?php
-
+// Apply KAFE Edition
 /**
  * IdP class.
  *
@@ -455,6 +455,14 @@ class SimpleSAML_IdP
         assert(isset($state['Responder']));
 
         $idp = SimpleSAML_IdP::getByState($state);
+        
+        $associations = $this->getAssociations();
+        if (empty($associations)) {
+            $session = SimpleSAML_Session::getSessionFromRequest();
+            $auth = $this->config->getString('auth');
+            $session->doLogout($auth);
+        }
+
         call_user_func($state['Responder'], $idp, $state);
         assert(false);
     }
@@ -511,6 +519,16 @@ class SimpleSAML_IdP
 
         $session = SimpleSAML_Session::getSessionFromRequest();
         $session->deleteData('core:idp-ssotime', $this->id.';'.substr($assocId, strpos($assocId, ':') + 1));
+
+        $logouttype = $this->getConfig()->getString('logouttype');
+        $associations = $this->getAssociations();
+        if (empty($associations) || $logouttype !== 'iframe') {
+            // terminate the local session
+            $id = SimpleSAML_Auth_State::saveState($state, 'core:Logout:afterbridge');
+            $returnTo = SimpleSAML_Module::getModuleURL('core/idp/resumelogout.php', array('id' => $id));
+
+            $this->authSource->logout($returnTo);
+        }
 
         $handler = $this->getLogoutHandler();
         $handler->onResponse($assocId, $relayState, $error);

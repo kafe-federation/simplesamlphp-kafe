@@ -1,5 +1,5 @@
 <?php
-
+// Apply KAFE Edition
 /**
  * This is class for parsing of SAML 1.x and SAML 2.0 metadata.
  *
@@ -438,6 +438,8 @@ class SimpleSAML_Metadata_SAMLParser
         $ret = array();
         $ret['entityid'] = $this->entityId;
         $ret['entityDescriptor'] = $this->entityDescriptor;
+        
+        $ret['registrationInfo'] = $this->registrationInfo;
 
         // add organizational metadata
         if (!empty($this->organizationName)) {
@@ -856,6 +858,7 @@ class SimpleSAML_Metadata_SAMLParser
         $ret['scope'] = $ext['scope'];
         $ret['tags'] = $ext['tags'];
         $ret['EntityAttributes'] = $ext['EntityAttributes'];
+        $ret['RegistrationInfo'] = $ext['RegistrationInfo'];
         $ret['UIInfo'] = $ext['UIInfo'];
         $ret['DiscoHints'] = $ext['DiscoHints'];
 
