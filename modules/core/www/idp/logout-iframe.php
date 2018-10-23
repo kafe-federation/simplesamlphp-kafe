@@ -117,9 +117,6 @@ $id = SimpleSAML_Auth_State::saveState($state, 'core:Logout-IFrame');
 $globalConfig = SimpleSAML_Configuration::getInstance();
 
 $template_id = 'core:logout-iframe.php';
-if ($type === 'nojs') {
-    $template_id = 'core:logout-iframe-wrapper.php';
-}
 
 $t = new SimpleSAML_XHTML_Template($globalConfig, $template_id);
 $t->data['auth_state'] = $id;
