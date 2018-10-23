@@ -6,10 +6,9 @@ $SPs = $this->data['SPs'];
 $iframeURL = 'logout-iframe.php?type=embed&id='.urlencode($id);
 
 // pretty arbitrary height, but should have enough safety margins for most cases
-$iframeHeight = 25 + count($SPs) * 4;
+$iframeHeight = 827 + count($SPs) * 30;
 
 $this->data['header'] = $this->t('{logout:progress}');
-$this->includeAtTemplateBase('includes/header.php');
 echo '<iframe style="width:100%; height:'.$iframeHeight.'em; border:0;" src="'.htmlspecialchars($iframeURL).
      '"></iframe>';
 
@@ -25,5 +24,3 @@ foreach ($SPs as $assocId => $sp) {
 
     echo('<iframe style="width:0; height:0; border:0;" src="'.htmlspecialchars($url).'"></iframe>');
 }
-
-$this->includeAtTemplateBase('includes/footer.php');

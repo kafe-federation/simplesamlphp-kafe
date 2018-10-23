@@ -17,14 +17,14 @@ if (array_key_exists('jquery', $this->data)) $jquery = $this->data['jquery'];
 
 if (array_key_exists('pageid', $this->data)) {
 	$hookinfo = array(
-		'pre' => &$this->data['htmlinject']['htmlContentPre'], 
-		'post' => &$this->data['htmlinject']['htmlContentPost'], 
-		'head' => &$this->data['htmlinject']['htmlContentHead'], 
-		'jquery' => &$jquery, 
+		'pre' => &$this->data['htmlinject']['htmlContentPre'],
+		'post' => &$this->data['htmlinject']['htmlContentPost'],
+		'head' => &$this->data['htmlinject']['htmlContentHead'],
+		'jquery' => &$jquery,
 		'page' => $this->data['pageid']
 	);
-		
-	SimpleSAML_Module::callHooks('htmlinject', $hookinfo);	
+
+	SimpleSAML_Module::callHooks('htmlinject', $hookinfo);
 }
 // - o - o - o - o - o - o - o - o - o - o - o - o -
 
@@ -72,8 +72,8 @@ if (!isset($this->data['header'])) {
 <?php
 if(!empty($jquery)) {
 	// SSP 의 버전을 체크해서 Jquery 로드 결정
-	$version = '1.6';
-	$config = SimpleSAML_Configuration::getInstance();	
+	$version = '1.8';
+	$config = SimpleSAML_Configuration::getInstance();
 	if (strpos($config->getVersion(), '1.14') === 0) {
 		$version = '1.8';
 	}
@@ -85,22 +85,22 @@ if(!empty($jquery)) {
 	if ($version == '1.6') {
 		if (isset($jquery['core']) && $jquery['core'])
 			echo('<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery-16.js"></script>' . "\n");
-	
+
 		if (isset($jquery['ui']) && $jquery['ui'])
 			echo('<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery-ui-16.js"></script>' . "\n");
-	
+
 		if (isset($jquery['css']) && $jquery['css'])
-			echo('<link rel="stylesheet" media="screen" type="text/css" href="/' . $this->data['baseurlpath'] . 
-				'resources/uitheme16/ui.all.css" />' . "\n");	
+			echo('<link rel="stylesheet" media="screen" type="text/css" href="/' . $this->data['baseurlpath'] .
+				'resources/uitheme16/ui.all.css" />' . "\n");
 	} else if ($version == '1.8') {
 		if (isset($jquery['core']) && $jquery['core'])
 			echo('<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery-1.8.js"></script>' . "\n");
-	
+
 		if (isset($jquery['ui']) && $jquery['ui'])
 			echo('<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery-ui-1.8.js"></script>' . "\n");
-	
+
 		if (isset($jquery['css']) && $jquery['css'])
-			echo('<link rel="stylesheet" media="screen" type="text/css" href="/' . $this->data['baseurlpath'] . 
+			echo('<link rel="stylesheet" media="screen" type="text/css" href="/' . $this->data['baseurlpath'] .
 				'resources/uitheme1.8/jquery-ui.css" />' . "\n");
 	}
 }
@@ -115,7 +115,7 @@ if(!empty($this->data['htmlinject']['htmlContentHead'])) {
 		echo $c;
 	}
 }
-	
+
 if(array_key_exists('head', $this->data)) {
 	echo '<!-- head -->' . $this->data['head'] . '<!-- /head -->';
 }
@@ -127,7 +127,7 @@ if (array_key_exists('autofocus', $this->data)) {
 	$onLoad .= 'SimpleSAML_focus(\'' . $this->data['autofocus'] . '\');';
 }
 if (isset($this->data['onLoad'])) {
-	$onLoad .= $this->data['onLoad']; 
+	$onLoad .= $this->data['onLoad'];
 }
 
 if ($onLoad !== '') {
