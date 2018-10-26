@@ -1,5 +1,5 @@
 <?php
-$attributemap = array(
+$attributemap = [
     'aRecord'                       => 'urn:oid:0.9.2342.19200300.100.1.26',
     'aliasedEntryName'              => 'urn:oid:2.5.4.1',
     'aliasedObjectName'             => 'urn:oid:2.5.4.1',
@@ -189,4 +189,12 @@ $attributemap = array(
     'userid'                        => 'urn:oid:0.9.2342.19200300.100.1.1',
     'x121Address'                   => 'urn:oid:2.5.4.24',
     'x500UniqueIdentifier'          => 'urn:oid:2.5.4.45',
-);
+    'koCommonName'		    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.4.3',
+    'koGivenName'		    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.4.22',
+    'koSurname'			    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.4.4',
+    'koOrganizationName'	    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.4.10',
+    'koOrganizationUnitName'	    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.4.11',
+    'koHomePostalAddress'	    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.1.39',
+    'koPostalAddress'		    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.4.16',
+    'koResearcherNumber'	    => 'urn:oid:1.3.6.1.4.1.14305.1.10.1.1.16',
+];
